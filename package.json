@@ -1,0 +1,14 @@
+{
+  "name": "web-tester",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test:buttons": "node --loader ts-node/esm src/runner.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "playwright": "^1.47.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.0"
+  }
+}
