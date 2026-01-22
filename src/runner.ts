@@ -5,7 +5,7 @@ import { ButtonDetector, ButtonTester } from "./components/buttons/index.js";
 import { writeJsonReport } from "./reporters/jsonReporter.js";
 import { RunResult } from "./core/types.js";
 
-const TARGET_URL = process.argv[2] ?? "https://example.com";
+const TARGET_URL = process.argv[2] ?? "https://www.klgeurope.com/klg-transport-chemie";
 
 const logger = new Logger();
 
