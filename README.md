@@ -1,4 +1,4 @@
-#Web Tester Bot
+##Web Tester Bot
 
 De Web Tester Bot is een project dat is opgezet om websites automatisch te testen vanuit het perspectief van een echte gebruiker. In plaats van vooraf vastgelegde testscripts, verkent de bot een pagina zelfstandig, herkent interactieve onderdelen en voert gecontroleerde acties uit om te controleren of deze onderdelen correct functioneren. De nadruk ligt daarbij op elementen die direct invloed hebben op conversie, zoals knoppen en formulieren.
 
