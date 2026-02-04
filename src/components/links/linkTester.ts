@@ -8,11 +8,15 @@ import {
   isJavascriptLink,
   isExternalLink
 } from "./linkHeuristics.js";
+import type { DebugFn } from "../../core/debug.js";
+
+
+
 
 export class LinkTester {
   constructor(private logger: Logger) {}
 
-  async testAll(page: Page, links: LinkCandidate[]) {
+  async testAll(page: Page, links: LinkCandidate[], debug?: DebugFn) {
     let tested = 0;
 
     for (const link of links) {

@@ -3,23 +3,37 @@ import { Logger } from "../../core/logger.js";
 import { ButtonCandidate } from "../../core/types.js";
 import { isRiskyButton } from "./buttonHeuristics.js";
 import { safeFilePart, shortHash } from "../../core/utils.js";
+import type { DebugFn } from "../../core/debug.js";
 
 function looksLikeMailto(text?: string, aria?: string) {
   const t = (text ?? "").toLowerCase();
   const a = (aria ?? "").toLowerCase();
-  return t.includes("mail") || t.includes("e-mail") || t.includes("email") || a.includes("mail") || a.includes("e-mail") || a.includes("email");
+  return (
+    t.includes("mail") ||
+    t.includes("e-mail") ||
+    t.includes("email") ||
+    a.includes("mail") ||
+    a.includes("e-mail") ||
+    a.includes("email")
+  );
 }
 
 export class ButtonTester {
   constructor(private logger: Logger) {}
 
-  async testAll(page: Page, buttons: ButtonCandidate[]) {
+  async testAll(page: Page, buttons: ButtonCandidate[], debug?: DebugFn) {
     let tested = 0;
+    let index = 0;
 
     for (const btn of buttons) {
+      index++;
       const label = btn.text ?? btn.ariaLabel ?? btn.selector;
 
+      debug?.(`BUTTON ${index}/${buttons.length}: start | label="${label}" | selector=${btn.selector}`);
+
       if (isRiskyButton(btn.text) || isRiskyButton(btn.ariaLabel)) {
+        debug?.(`BUTTON ${index}/${buttons.length}: skip risky | label="${label}"`);
+
         this.logger.warn("button.skipped_risky", `Overgeslagen: mogelijk risicovol (${label})`, {
           url: page.url(),
           selector: btn.selector,
@@ -35,34 +49,45 @@ export class ButtonTester {
         const locator = page.locator(btn.selector);
         await locator.scrollIntoViewIfNeeded().catch(() => null);
 
-        const href = await locator.evaluate(el => {
-          const a = (el as HTMLElement).closest("a");
-          return a ? a.getAttribute("href") : null;
-        }).catch(() => null);
+        const href = await locator
+          .evaluate(el => {
+            const a = (el as HTMLElement).closest("a");
+            return a ? a.getAttribute("href") : null;
+          })
+          .catch(() => null);
 
         const isMailto = typeof href === "string" && href.toLowerCase().startsWith("mailto:");
         const mailIntent = isMailto || looksLikeMailto(btn.text, btn.ariaLabel);
 
         if (isMailto) {
+          debug?.(`BUTTON ${index}/${buttons.length}: mailto detected | href=${href}`);
+
           this.logger.info("button.mailto_detected", `Mailto gedetecteerd (${label})`, {
             url: beforeUrl,
             selector: btn.selector,
             meta: { href }
           });
         } else if (mailIntent) {
+          debug?.(`BUTTON ${index}/${buttons.length}: mail intent suspected`);
+
           this.logger.info("button.mail_intent", `Mail intent vermoedelijk aanwezig (${label})`, {
             url: beforeUrl,
             selector: btn.selector
           });
         } else {
+          debug?.(`BUTTON ${index}/${buttons.length}: click attempt`);
+
           this.logger.info("button.click", `Klik: ${label}`, { url: beforeUrl, selector: btn.selector });
         }
 
+        debug?.(`BUTTON ${index}/${buttons.length}: clicking now`);
         await locator.click({ timeout: 5000, noWaitAfter: true });
 
         await page.waitForTimeout(800);
 
         const afterUrl = page.url();
+        debug?.(`BUTTON ${index}/${buttons.length}: click done | before=${beforeUrl} | after=${afterUrl}`);
+
         if (afterUrl !== beforeUrl) {
           this.logger.info("nav.changed", "URL wijzigde na klik", { url: afterUrl, selector: btn.selector });
         }
@@ -70,6 +95,14 @@ export class ButtonTester {
         tested++;
       } catch (e) {
         const msg = String(e);
+
+        if (msg.includes("intercepts pointer events")) {
+          debug?.(
+            `BUTTON ${index}/${buttons.length}: click blocked by overlay (pointer events) | selector=${btn.selector}`
+          );
+        } else {
+          debug?.(`BUTTON ${index}/${buttons.length}: click failed | error=${msg}`);
+        }
 
         if (msg.toLowerCase().includes("mailto") || msg.toLowerCase().includes("external")) {
           this.logger.warn("button.mailto_click_behavior", `Klik leidde tot externe mail actie, toegestaan (${label})`, {
@@ -87,10 +120,13 @@ export class ButtonTester {
           meta: { error: msg }
         });
 
-        await page.screenshot({ path: `output/screenshots/${actionId}.png`, fullPage: true }).catch(() => null);
+        await page
+          .screenshot({ path: `output/screenshots/${actionId}.png`, fullPage: true })
+          .catch(() => null);
       }
     }
 
+    debug?.(`BUTTONS: klaar | getest=${tested} | totaal=${buttons.length}`);
     return tested;
   }
 }
