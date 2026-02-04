@@ -1,0 +1,98 @@
+{
+  "url": "https://www.klgeurope.com/klanten/sectoren",
+  "startedAt": "2026-02-04T08:11:21.066Z",
+  "finishedAt": "2026-02-04T08:11:28.397Z",
+  "findings": [
+    {
+      "severity": "warn",
+      "type": "net.requestfailed_noise",
+      "message": "net::ERR_BLOCKED_BY_ORB",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "meta": {
+        "requestUrl": "https://d5yoctgpv4cpx.cloudfront.net/RUM-C069EF0DE8/v4-www.klgeurope.com.js",
+        "method": "GET"
+      }
+    },
+    {
+      "severity": "warn",
+      "type": "net.requestfailed_noise",
+      "message": "net::ERR_BLOCKED_BY_ORB",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "meta": {
+        "requestUrl": "https://api.salesfeed.com/v3/bootstrap.js?aid=klgeurope",
+        "method": "GET"
+      }
+    },
+    {
+      "severity": "info",
+      "type": "buttons.detected",
+      "message": "Gevonden buttons: 2",
+      "url": "https://www.klgeurope.com/klanten/sectoren"
+    },
+    {
+      "severity": "info",
+      "type": "button.click",
+      "message": "Klik: button >> nth=2",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "selector": "button >> nth=2"
+    },
+    {
+      "severity": "info",
+      "type": "button.click",
+      "message": "Klik: button >> nth=3",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "selector": "button >> nth=3"
+    },
+    {
+      "severity": "warn",
+      "type": "net.requestfailed_noise",
+      "message": "net::ERR_ABORTED",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "meta": {
+        "requestUrl": "https://pagead2.googlesyndication.com/ccm/collect?frm=0&en=page_view&dl=https%3A%2F%2Fwww.klgeurope.com%2Fklanten%2Fsectoren&scrsrc=www.googletagmanager.com&rnd=1670680941.1770192684&navt=n&npa=1&ep.ads_data_redaction=0&gtm=45He6221v72092563za200zd72092563xea&gcs=G100&gcd=13p3p3p2p5l1&dma_cps=-&dma=1&tcfd=1000h&tag_exp=103116026~103200004~104527907~104528500~104684208~104684211~115616985~115938465~115938469~116185181~116185182~116988315~117041587&apve=1&apvf=f&apvc=1&tft=1770192683756&tfd=2490",
+        "method": "POST"
+      }
+    },
+    {
+      "severity": "warn",
+      "type": "net.requestfailed_noise",
+      "message": "net::ERR_ABORTED",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "meta": {
+        "requestUrl": "https://pagead2.googlesyndication.com/ccm/collect?frm=0&dl=https%3A%2F%2Fwww.klgeurope.com%2Fklanten%2Fsectoren&scrsrc=www.googletagmanager.com&rnd=1670680941.1770192684&navt=n&npa=1&_tu=CA&gtm=45be6221z872092563za20gzb72092563zd72092563xea&gcs=G100&gcd=13p3p3p2p5l1&dma_cps=-&dma=1&tcfd=1000h&tag_exp=103116026~103200004~104527907~104528500~104684208~104684211~115616985~115938465~115938469~116185181~116185182~116988315~117041587&apve=1&apvf=f&apvc=0&tids=AW-878097014&tid=AW-878097014&tft=1770192683758&tfd=2492",
+        "method": "POST"
+      }
+    },
+    {
+      "severity": "warn",
+      "type": "net.requestfailed_noise",
+      "message": "net::ERR_ABORTED",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "meta": {
+        "requestUrl": "https://pagead2.googlesyndication.com/ccm/collect?frm=0&en=page_view&dl=https%3A%2F%2Fwww.klgeurope.com%2Fklanten%2Fsectoren&scrsrc=www.googletagmanager.com&rnd=1670680941.1770192684&navt=n&npa=1&_tu=CA&gtm=45be6221z872092563za20gzb72092563zd72092563xec&gcs=G100&gcd=13p3p3p2p5l1&dma_cps=-&dma=1&tcfd=1000h&tag_exp=103116026~103200004~104527907~104528500~104684208~104684211~115616985~115938465~115938469~116185181~116185182~116988315~117041587&apve=1&apvf=f&apvc=0&tids=AW-878097014&tid=AW-878097014&tft=1770192683757&tfd=2491",
+        "method": "POST"
+      }
+    },
+    {
+      "severity": "warn",
+      "type": "net.requestfailed_noise",
+      "message": "net::ERR_ABORTED",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "meta": {
+        "requestUrl": "https://region1.google-analytics.com/g/collect?v=2&tid=G-0HM2LWQ2SR&gtm=45je6221v871571805z872092563za20gzb72092563zd72092563&_p=1770192681409&gcs=G100&gcd=13p3p3p2p5l1&npa=1&dma_cps=-&dma=1&tcfd=1000h&cid=691125491.1770192684&ul=nl&sr=1280x720&tt=internal&uaa=x86&uab=64&uafvl=HeadlessChrome%3B143.0.7499.4%7CChromium%3B143.0.7499.4%7CNot%2520A(Brand%3B24.0.0.0&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&are=1&frm=0&pscdl=denied&_eu=CAAAAGA&_s=1&tag_exp=103116026~103200004~104527907~104528501~104684208~104684211~115616986~115938465~115938469~116185181~116185182~116988316~117025850~117041587&sid=1770192681&sct=1&seg=0&dl=https%3A%2F%2Fwww.klgeurope.com%2Fklanten%2Fsectoren&dt=KLG%20werkt%20voor...&_tu=CA&en=page_view&_fv=1&_nsi=1&_ss=1&ep.anonymizeIp=True&tfd=2489",
+        "method": "POST"
+      }
+    },
+    {
+      "severity": "error",
+      "type": "button.click_failed",
+      "message": "Klik faalde: button >> nth=3",
+      "url": "https://www.klgeurope.com/klanten/sectoren",
+      "selector": "button >> nth=3",
+      "meta": {
+        "error": "TimeoutError: locator.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button').nth(3)\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" class=\"search-submit\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"cc_overlay_lock\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"cc_overlay_lock\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    9 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"cc_overlay_lock\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+      }
+    }
+  ],
+  "testedButtons": 1
+}

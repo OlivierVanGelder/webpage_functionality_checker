@@ -1,4 +1,5 @@
 import { Browser, BrowserContext, Page } from "playwright";
+import { isLikelyNoiseRequest } from "./safety/networkNoise.js";
 import { Logger } from "./logger.js";
 
 export async function createContext(browser: Browser, logger: Logger): Promise<BrowserContext> {
@@ -18,11 +19,22 @@ export async function createContext(browser: Browser, logger: Logger): Promise<B
     });
 
     page.on("requestfailed", req => {
+      const requestUrl = req.url();
+
+      if (isLikelyNoiseRequest(requestUrl)) {
+        logger.warn("net.requestfailed_noise", req.failure()?.errorText ?? "request failed", {
+          url: page.url(),
+          meta: { requestUrl, method: req.method() }
+        });
+        return;
+      }
+
       logger.error("net.requestfailed", req.failure()?.errorText ?? "request failed", {
         url: page.url(),
-        meta: { requestUrl: req.url(), method: req.method() }
+        meta: { requestUrl, method: req.method() }
       });
     });
+
 
     page.on("response", res => {
       const status = res.status();

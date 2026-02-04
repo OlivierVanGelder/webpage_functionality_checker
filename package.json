@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test:buttons": "node --loader ts-node/esm src/runner.ts"
+    "test:page": "node --loader ts-node/esm src/runner.ts"
   },
   "devDependencies": {
     "@types/node": "^22.19.7",

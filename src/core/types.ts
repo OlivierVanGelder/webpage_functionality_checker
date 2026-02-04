@@ -24,4 +24,5 @@ export type RunResult = {
   finishedAt: string;
   findings: Finding[];
   testedButtons: number;
+  testedLinks: number;
 };
